@@ -28,6 +28,7 @@ git clone https://github.com/giuliana-bezerra/picpay-desafio-backend.git
 ```
 docker-compose up
 ```
+- Executar a aplicação Spring Boot
 - Acessar aplicação em `http://localhost:8080`.
 
 ## Arquitetura
