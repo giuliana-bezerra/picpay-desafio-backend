@@ -3,6 +3,7 @@ package br.com.giulianabezerra.picpaydesafiobackend.wallet;
 import java.math.BigDecimal;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Version;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Table("WALLETS")
@@ -13,14 +14,15 @@ public record Wallet(
     String email,
     String password,
     int type,
-    BigDecimal balance) {
+    BigDecimal balance,
+    @Version Long version) {
 
   public Wallet debit(BigDecimal value) {
     return new Wallet(id, fullName, cpf, email, password, type,
-        balance.subtract(value));
+        balance.subtract(value), version);
   }
 
   public Wallet credit(BigDecimal value) {
-    return new Wallet(id, fullName, cpf, email, password, type, balance.add(value));
+    return new Wallet(id, fullName, cpf, email, password, type, balance.add(value), version);
   }
 }

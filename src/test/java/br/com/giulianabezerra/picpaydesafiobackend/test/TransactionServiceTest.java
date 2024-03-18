@@ -48,9 +48,9 @@ public class TransactionServiceTest {
   public void testCreateTransactionSuccess() {
     var transaction = new Transaction(null, 1L, 2L, new BigDecimal(1000), null);
     var payee = new Wallet(transaction.payee(), null, null, null, null, WalletType.COMUM.getValue(),
-        BigDecimal.ZERO);
+        BigDecimal.ZERO, 1L);
     var payer = new Wallet(transaction.payer(), null, null, null, null, WalletType.COMUM.getValue(),
-        new BigDecimal(1000));
+        new BigDecimal(1000), 1L);
 
     when(walletRepository.findById(transaction.payee())).thenReturn(Optional.of(payee));
     when(walletRepository.findById(transaction.payer())).thenReturn(Optional.of(payer));
